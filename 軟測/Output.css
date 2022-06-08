@@ -1,0 +1,96 @@
+ .u-section-1 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/trttr-min.jpg");
+  background-position: 50% 50%;
+  min-height: 737px;
+}
+
+.u-section-1 .u-group-1 {
+  width: calc(((100% - 1140px) / 2) + 570px);
+  left: auto;
+  right: 0;
+  background-image: none;
+  min-height: 737px;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 30px;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  margin: 540px auto 0;
+}
+
+@media (max-width: 1199px) {
+   .u-section-1 {
+    min-height: 608px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: calc(((100% - 940px) / 2) + 570px);
+    min-height: auto;
+  }
+}
+
+@media (max-width: 991px) {
+   .u-section-1 {
+    min-height: 466px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: calc(((100% - 720px) / 2) + 570px);
+    min-height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+   .u-section-1 {
+    background-position: 32.57% 50%;
+    min-height: 350px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: calc(((100% - 540px) / 2) + 570px);
+    min-height: auto;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+   .u-section-1 {
+    min-height: 220px;
+  }
+
+  .u-section-1 .u-group-1 {
+    width: calc(((100% - 340px) / 2) + 570px);
+    min-height: auto;
+  }
+}
+
+.wrap{
+  width: 600px;
+  height: 650px;
+
+
+  margin-left: 850px;
+  /*border: 5px solid gray;/*設border方便看wrap範圍*/
+}
+.header{
+  width: 600px;
+  height: 500px;
+  
+}
+.content{
+  width: 100px;
+  height: 50px;
+  margin-left: 250px;
+  
+}
