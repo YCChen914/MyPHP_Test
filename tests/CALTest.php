@@ -141,28 +141,31 @@ class CALTest extends TestCase
     public function testHours()
     {
         $client = new CAL();
-        //有效等價類(19) 
+        //有效等價類(19) 上點 0
         $client->Sethours("0");
         $expect = "ok";
         $this->assertEquals(0, $client->Gethours());//順便測
         $this->assertEquals($expect, $client->validationHours());
-        //有效等價類(19) 
+        //有效等價類(19) 上點 876000
         $client->Sethours("876000");
         $expect = "ok";
         $this->assertEquals($expect, $client->validationHours());
-        //有效等價類(19) 
+        //有效等價類(19) 離點 1
         $client->Sethours("1");
         $expect = "ok";
         $this->assertEquals($expect, $client->validationHours());
-        //有效等價類(19) 
+        //有效等價類(19) 離點 875999
         $client->Sethours("875999");
         $expect = "ok";
+        //有效等價類(19) 內點 3
+        $client->Sethours("3");
+        $expect = "ok";
         $this->assertEquals($expect, $client->validationHours());
-        //無效等價類(22) 
-        $client->Sethours("976001");
+        //無效等價類(22) 離點 876001
+        $client->Sethours("876001");
         $expect = "時數過大";
         $this->assertEquals($expect, $client->validationHours());
-        //無效等價類(21) 
+        //無效等價類(21) 離點 -1
         $client->Sethours("-1");
         $expect = "時數不可為負";
         $this->assertEquals($expect, $client->validationHours());
@@ -182,5 +185,34 @@ class CALTest extends TestCase
         $client->Sethours("#1");
         $expect = "時數中不可包含特殊字元";
         $this->assertEquals($expect, $client->validationHours());
+    }
+    public function testG()
+    {
+        $client = new CAL();
+        //有效等價類(26) 
+        $client->SetG("4G");
+        $expect = "ok";
+        $this->assertEquals("4G", $client->GetG());//順便測
+        $this->assertEquals($expect, $client->validationG());
+        //有效等價類(26) 
+        $client->SetG("5G");
+        $expect = "ok";
+        $this->assertEquals($expect, $client->validationG());
+        //無效等價類(27) 
+        $client->SetG("4");
+        $expect = "並非4G/5G";
+        $this->assertEquals($expect, $client->validationG());
+        //無效等價類(28) 
+        $client->SetG("");
+        $expect = "4G/5G不可為空";
+        $this->assertEquals($expect, $client->validationG());
+        //無效等價類(29) 
+        $client->SetG(" 1");
+        $expect = "4G/5G中不可包含空格";
+        $this->assertEquals($expect, $client->validationG());
+        //無效等價類(30) 
+        $client->SetG("#1");
+        $expect = "4G/5G中不可包含特殊字元";
+        $this->assertEquals($expect, $client->validationG());
     }
 }

@@ -181,6 +181,34 @@ class CAL
         }
         
     }
-    
+    public function validationG()
+    {
+        // 4G/5G檢查
+        if($this->G=="4G"||$this->G=="5G")return "ok";
+        else
+        {
+            //空值檢查
+            if(strlen($this->G)!=0)
+            {
+                //逐一檢查
+                for($i=0;$i<strlen($this->G);$i++)
+                {
+                    //數字
+                    if(ord($this->G[$i]) >=48&&ord($this->G[$i])<=57);
+                    //G
+                    elseif(ord($this->G[$i]) == 71);
+                    //空格
+                    else if(ord($this->G[$i]) == 32) return "4G/5G中不可包含空格";
+                    //特殊字元
+                    else return "4G/5G中不可包含特殊字元";
+                }
+                return "並非4G/5G";
+            }
+            else
+            {
+                return"4G/5G不可為空";
+            }
+        }
+    }
 }
 ?>
