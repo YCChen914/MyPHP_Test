@@ -138,4 +138,49 @@ class CALTest extends TestCase
         $expect = "方案不可為空";
         $this->assertEquals($expect, $client->validationPlan());
     }
+    public function testHours()
+    {
+        $client = new CAL();
+        //有效等價類(19) 
+        $client->Sethours("0");
+        $expect = "ok";
+        $this->assertEquals(0, $client->Gethours());//順便測
+        $this->assertEquals($expect, $client->validationHours());
+        //有效等價類(19) 
+        $client->Sethours("876000");
+        $expect = "ok";
+        $this->assertEquals($expect, $client->validationHours());
+        //有效等價類(19) 
+        $client->Sethours("1");
+        $expect = "ok";
+        $this->assertEquals($expect, $client->validationHours());
+        //有效等價類(19) 
+        $client->Sethours("875999");
+        $expect = "ok";
+        $this->assertEquals($expect, $client->validationHours());
+        //無效等價類(22) 
+        $client->Sethours("976001");
+        $expect = "時數過大";
+        $this->assertEquals($expect, $client->validationHours());
+        //無效等價類(21) 
+        $client->Sethours("-1");
+        $expect = "時數不可為負";
+        $this->assertEquals($expect, $client->validationHours());
+        //無效等價類(20) 
+        $client->Sethours("1.1");
+        $expect = "時數不可為小數";
+        $this->assertEquals($expect, $client->validationHours());
+        //無效等價類(23) 
+        $client->Sethours("");
+        $expect = "時數不可為空";
+        $this->assertEquals($expect, $client->validationHours());
+        //無效等價類(24) 
+        $client->Sethours(" 1");
+        $expect = "時數中不可包含空格";
+        $this->assertEquals($expect, $client->validationHours());
+        //無效等價類(25) 
+        $client->Sethours("#1");
+        $expect = "時數中不可包含特殊字元";
+        $this->assertEquals($expect, $client->validationHours());
+    }
 }

@@ -136,12 +136,50 @@ class CAL
     }
     public function validationPlan()
     {
+        //方案檢查
         if($this->plan=="1"||$this->plan=="2"||$this->plan=="3"||$this->plan=="4")return "ok";
         else
         {
             if(strlen($this->plan)==0)return"方案不可為空";
             else return"不可為1~4以外字元";
         }
+    }
+    public function validationHours()
+    {
+        //空值檢查
+        if(strlen($this->hours)!=0)
+        {
+            //逐一檢查
+            for($i=0;$i<strlen($this->hours);$i++)
+            {
+                //數字
+                if(ord($this->hours[$i]) >=48&&ord($this->hours[$i])<=57);
+                //負號, 小數點暫時通過
+                elseif(ord($this->hours[$i]) == 45||ord($this->hours[$i]) == 46);
+                //空格
+                else if(ord($this->hours[$i]) == 32) return "時數中不可包含空格";
+                //特殊字元
+                else return "時數中不可包含特殊字元";
+            }
+            //範圍內數值檢查
+            if($this->hours>=0&&$this->hours<=876000)
+            {
+                //是否小數
+                if(ceil($this->hours)!=$this->hours) return"時數不可為小數";
+                else return"ok";
+            }
+            else
+            {   
+                //負值 超過
+                if($this->hours<0)  return"時數不可為負";
+                else return"時數過大";
+            }
+        }
+        else
+        {
+            return"時數不可為空";
+        }
+        
     }
     
 }
