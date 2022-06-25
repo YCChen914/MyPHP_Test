@@ -210,5 +210,43 @@ class CAL
             }
         }
     }
+    public function validationCal()
+    {
+        if($this->validationHours()=="ok")
+        {
+            switch ($this->plan) 
+            {
+                case 1:
+                    if($this->hours)
+                    $money = 400 * $this->hours;
+                    if($this->G=="5G") $money=$money*1.3;
+                    else if(($this->G=="4G"));
+                    else $money = "並非4G或5G";
+                    break;
+                case 2:
+                    $money = 300 * $this->hours;
+                    if($this->G=="5G") $money=$money*1.2;
+                    else if(($this->G=="4G"));
+                    else $money = "並非4G或5G";
+                    break;
+                case 3:
+                    $money = 200 * $this->hours;
+                    if($this->G=="5G") $money=$money*1.1;
+                    else if(($this->G=="4G"));
+                    else $money = "並非4G或5G";
+                    break;
+                case 4:
+                    $money = 100 * $this->hours;
+                    if($this->G=="5G") $money=$money*1.0;
+                    else if(($this->G=="4G"));
+                    else $money = "並非4G或5G";
+                    break; 
+                default:
+                    $money = "無此方案";
+            }
+            return $money;
+        }
+        else return "時數輸入錯誤 無法計算";
+    }
 }
 ?>

@@ -39,23 +39,23 @@
               </tr>
               <tr>
                   <th><font size="4">姓名</font></th>
-                  <th><font size="4"><?php echo$_POST['name']?></font></th>
+                  <th><font size="4"><?php echo$name?></font></th>
               </tr>
               <tr>
                   <th><font size="4">電子郵件信箱</font></th>
-                  <th><font size="4"><?php echo$_POST['email']?></font></th>
+                  <th><font size="4"><?php echo$email?></font></th>
               </tr>
               <tr>
                   <th><font size="4">方案</font></th>
-                  <th><font size="4"><?php echo$_POST['text']?></font></th>
+                  <th><font size="4"><?php echo$plan?></font></th>
               </tr>
               <tr>
                   <th><font size="4">使用時數</font></th>
-                  <th><font size="4"><?php echo$_POST['text-1']?></font></th>
+                  <th><font size="4"><?php echo$hours?></font></th>
               </tr>
               <tr>
                   <th><font size="4">4G/5G</font></th>
-                  <th><font size="4"><?php echo$_POST['text-2']?></font></th>
+                  <th><font size="4"><?php echo$G?></font></th>
               </tr>
               <tr>
                   <th><font size="4">話費額</font></th>

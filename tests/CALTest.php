@@ -215,4 +215,93 @@ class CALTest extends TestCase
         $expect = "4G/5G中不可包含特殊字元";
         $this->assertEquals($expect, $client->validationG());
     }
+    public function testCal()
+    {
+        $client = new CAL();
+        //test1
+        $client->Setplan("1");
+        $client->Sethours("3");
+        $client->SetG("6G");
+        $expect = "並非4G或5G";
+        $this->assertEquals($expect, $client->validationCal());
+        //test2
+        $client->Setplan("1");
+        $client->Sethours("3");
+        $client->SetG("5G");
+        $expect = 1560;
+        $this->assertEquals($expect, $client->validationCal());
+        //test3
+        $client->Setplan("1");
+        $client->Sethours("3");
+        $client->SetG("4G");
+        $expect = 1200;
+        $this->assertEquals($expect, $client->validationCal());
+        //test4
+        $client->Setplan("2");
+        $client->Sethours("3");
+        $client->SetG("6G");
+        $expect = "並非4G或5G";
+        $this->assertEquals($expect, $client->validationCal());
+        //test5
+        $client->Setplan("2");
+        $client->Sethours("3");
+        $client->SetG("5G");
+        $expect = 1080;
+        $this->assertEquals($expect, $client->validationCal());
+        //test6
+        $client->Setplan("2");
+        $client->Sethours("3");
+        $client->SetG("4G");
+        $expect = 900;
+        $this->assertEquals($expect, $client->validationCal());
+        //test7
+        $client->Setplan("3");
+        $client->Sethours("3");
+        $client->SetG("6G");
+        $expect = "並非4G或5G";
+        $this->assertEquals($expect, $client->validationCal());
+        //test8
+        $client->Setplan("3");
+        $client->Sethours("3");
+        $client->SetG("5G");
+        $expect = 660;
+        $this->assertEquals($expect, $client->validationCal());
+        //test9
+        $client->Setplan("3");
+        $client->Sethours("3");
+        $client->SetG("4G");
+        $expect = 600;
+        $this->assertEquals($expect, $client->validationCal());
+        //test10
+        $client->Setplan("4");
+        $client->Sethours("3");
+        $client->SetG("6G");
+        $expect = "並非4G或5G";
+        $this->assertEquals($expect, $client->validationCal());
+        //test11
+        $client->Setplan("4");
+        $client->Sethours("3");
+        $client->SetG("5G");
+        $expect = 300;
+        $this->assertEquals($expect, $client->validationCal());
+        //test12
+        $client->Setplan("4");
+        $client->Sethours("3");
+        $client->SetG("4G");
+        $expect = 300;
+        $this->assertEquals($expect, $client->validationCal());
+        //test13
+        $client->Setplan("5");
+        $client->Sethours("3");
+        $client->SetG("4G");
+        $expect = "無此方案";
+        $this->assertEquals($expect, $client->validationCal());
+        //test14
+        $client->Setplan("1");
+        $client->Sethours("-1");
+        $client->SetG("4G");
+        $expect = "時數輸入錯誤 無法計算";
+        $this->assertEquals($expect, $client->validationCal());
+        
+    }
 }
